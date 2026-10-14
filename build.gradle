@@ -22,8 +22,8 @@ minecraft {
 
     runs {
         configureEach {
-            workingDirectory project.file('run')
-            property 'forge.logging.console.level', 'info'
+            workingDirectory = layout.projectDirectory.dir('run')
+            systemProperty 'forge.logging.console.level', 'info'
             mods {
                 "${project.mod_id}" {
                     source sourceSets.main
@@ -34,16 +34,26 @@ minecraft {
         server {
             args '--nogui'
         }
+        data {
+            workingDirectory = layout.projectDirectory.dir('run-data')
+            args '--mod', project.mod_id, '--all',
+                    '--output', layout.projectDirectory.dir('src/generated/resources'),
+                    '--existing', layout.projectDirectory.dir('src/main/resources')
+        }
     }
 }
 
 repositories {
-    maven { url = 'https://maven.minecraftforge.net/' }
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
     mavenCentral()
 }
 
 dependencies {
-    implementation "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+    implementation minecraft.dependency(
+            "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+    )
 }
 
 tasks.withType(JavaCompile).configureEach {
