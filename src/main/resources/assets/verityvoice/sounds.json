@@ -1,0 +1,11 @@
+{
+  "verity_voice": {
+    "subtitle": "subtitles.verityvoice.verity_voice",
+    "sounds": [
+      {
+        "name": "verityvoice:verity_voice",
+        "stream": true
+      }
+    ]
+  }
+}
