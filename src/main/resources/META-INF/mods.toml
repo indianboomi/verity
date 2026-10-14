@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[61,)"
+license="MIT"
+
+[[mods]]
+modId="tamilverity"
+version="0.1.0"
+displayName="Tamil Verity"
+authors="indianboomi"
+description='''An original Tamil-speaking Minecraft companion with meme dialogue and horror progression.'''
+
+[[dependencies.tamilverity]]
+modId="forge"
+mandatory=true
+versionRange="[61.2.3,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.tamilverity]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.21.11,1.22)"
+ordering="NONE"
+side="BOTH"
